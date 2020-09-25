@@ -1,0 +1,49 @@
+<div class="container" style="height: 100%;">
+  <div class="row";>
+ 
+
+
+<div class="col-md-3"   style="margin: auto; padding-top: 12%;">
+
+  <div class="list-group animate__animated animate__backInUp">
+    <a href="#" class="list-group-item list-group-item-action active text-center">
+     CHOOSE COMPANY TYPE<br/>From Options Below
+    </a><hr/>
+   
+    <button type="button" class="btn btn-primary btn-lg" onClick="bizToggle()">Business Name</button>
+                  <div id="myDIV1" style="display: none;">  
+                        <SELECT id="s1" class="form-control nav-item dropdown show" NAME="section" onChange="RedirectBizname();">
+                          <Option value="">Select Requirements Filling Method</option>
+                          <Option value="BizUpload">Upload</option>
+                          <Option value="BizForm">Fill form</option>
+                          </SELECT>
+                  </div>  <hr/>
+    <button type="button" class="btn btn-primary btn-lg" onclick="coopToggle()">Cooperative</button>
+                    <div id="myDIV2" style="display: none;"> 
+                      <SELECT id="s2" class="form-control nav-item dropdown show" NAME="section" onChange="RedirectCooperative();">
+                          <Option value="">Select Requirements Filling Method</option>
+                          <Option value="CoopUpload">Upload</option>
+                          <Option value="CoopForm">Fill form</option>
+                          </SELECT></div>
+                          <hr/>
+    <button type="button" class="btn btn-primary btn-lg" onclick="privateToggle()">Private Limited Liability</button>
+                            <div id="myDIV3" style="display: none;"> 
+                              <SELECT id="s3" class="form-control nav-item dropdown show" NAME="section" onChange="RedirectPrivateLimited();">
+                                <Option value="">Select Requirements Filling Method</option>
+                                <Option value="PrivateLtdUpload">Upload</option>
+                                <Option value="PrivateLtdForm">Fill form</option>
+                                </SELECT></div>
+                                          <hr/>
+    <button type="button" class="btn btn-primary btn-lg" onclick="guaranteeToggle()">Limited by Guarantee</button>
+                         <div id="myDIV4" style="display: none;"> 
+                          <SELECT id="s4" class="form-control nav-item dropdown show" NAME="section" onChange="RedirectLimbyGuarantee();">
+                            <Option value="">Select Requirements Filling Method</option>
+                            <Option value="LimbyGUpload">Upload</option>
+                            <Option value="LimByGForm">Fill form</option>
+                            </SELECT></div>
+  </div>
+</div>
+
+</div>
+</div>
+

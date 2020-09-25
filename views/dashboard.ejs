@@ -1,0 +1,194 @@
+<script> var TxtRotate = function(el, toRotate, period) {
+  this.toRotate = toRotate;
+  this.el = el;
+  this.loopNum = 0;
+  this.period = parseInt(period, 10) || 2000;
+  this.txt = '';
+  this.tick();
+  this.isDeleting = false;
+};
+
+TxtRotate.prototype.tick = function() {
+  var i = this.loopNum % this.toRotate.length;
+  var fullTxt = this.toRotate[i];
+
+  if (this.isDeleting) {
+    this.txt = fullTxt.substring(0, this.txt.length - 1);
+  } else {
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+  }
+
+  this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+  var that = this;
+  var delta = 300 - Math.random() * 100;
+
+  if (this.isDeleting) { delta /= 2; }
+
+  if (!this.isDeleting && this.txt === fullTxt) {
+    delta = this.period;
+    this.isDeleting = true;
+  } else if (this.isDeleting && this.txt === '') {
+    this.isDeleting = false;
+    this.loopNum++;
+    delta = 500;
+  }
+
+  setTimeout(function() {
+    that.tick();
+  }, delta);
+};
+
+window.onload = function() {
+  var elements = document.getElementsByClassName('txt-rotate');
+  for (var i=0; i<elements.length; i++) {
+    var toRotate = elements[i].getAttribute('data-rotate');
+    var period = elements[i].getAttribute('data-period');
+    if (toRotate) {
+      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+    }
+  }
+  // INJECT CSS
+  var css = document.createElement("style");
+  css.type = "text/css";
+  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+  document.body.appendChild(css);
+};
+</script>
+
+<script>
+  // Set the date we're counting down to
+  var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+  
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+  
+    // Get today's date and time
+    var now = new Date().getTime();
+      
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+      
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+      
+    // If the count down is over, write some text 
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+  }, 1000);
+  </script>
+
+
+
+
+<div class="container">
+ <div style="border: 3px solid grey; border-radius: 40px;">
+    <div class="row mt-4 justify-content-center">
+	
+	
+	<div class="col-md-4">
+<div class="card mb-3">
+ 
+
+
+  <h4 class="card-header" style="border-top-left-radius: 40px; border-top-right-radius: 40px;"> This is 
+    <span
+       class="txt-rotate"
+       data-period="2000"
+       data-rotate='[ "Sealed App.", "the Future..", "Law" & tech"]'></span>
+  </h4>
+
+
+
+  <div class="card-body">
+    <h5 class="card-title">Welcome,  <%= user.name %> </h5>
+    <h6 class="card-subtitle text-muted">My Dashboard</h6>
+    
+  </div>
+<div>
+  <br/>
+</div>
+
+ <div class="align-items-center  mx-auto">
+<div class="card text-white bg-success mb-3 shadow-lg p-1 mb-4 bg-white" style="border: 3px solid grey; border-radius: 100px;">
+    
+      <div class="text-center"> <img src="/images/sealedicon.jpg" width="100" class="rounded-circle"></div>
+   
+  </div>
+</div>
+ 
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><a href="/findlawyer" class="card-link">Find a Lawyer</a></li>
+    <li class="list-group-item"><a href="/registercompany/registercompany" class="card-link">Register Your Company/ Enterprise</a></li>
+    <li class="list-group-item"><a href="/changename/changename" class="card-link">Change of Name</a></li>
+   <li class="list-group-item"><a href="generatewill" class="card-link">Generate Will</a></li>
+   <li class="list-group-item"><a href="generateod" class="card-link">Generate Other Legal Contracts</a></li>
+  </ul>
+  <div class="card-footer text-muted" style="border-bottom: 5px solid grey;">
+    Copyright (c) - 2019 Sealed App Limited
+  </div>
+  
+</div>
+
+
+</div>
+
+
+<div class="col-md-4 .d-sm-none .d-md-block">
+
+
+<div class="list-group">
+  <a href="/users/logout" <button class="btn btn-secondary float-right my-2 my-sm-0 align-items-end" type="submit">Logout</button></a>
+</a>
+  <a href="#" class="list-group-item list-group-item-action active">
+    Activities
+   
+  <a href="#" class="list-group-item list-group-item-action">Message 1:
+    <span class="badge badge-primary badge-pill">14</span>
+    </a>
+
+</a>
+<a href="#" class="list-group-item list-group-item-action">Message 2:
+<span class="badge badge-primary badge-pill">14</span>
+</a>
+<a href="#" class="list-group-item list-group-item-action">Message 3:
+  <span class="badge badge-primary badge-pill">14</span>
+  </a>
+</div>
+
+<div class="card text-white bg-info" style="text-align: center">
+  <div class="card-header">On-going Projects</div>
+  <div class="card-body">
+    <h4 class="card-title">Register Business Name</h4>
+    <p class="card-text">You have requested the registration of <b> Amherst Co. Limited </b>.</p>
+  </div>
+</div>
+
+<div class="card text-white bg-success mb-3" style="text-align: center; border-bottom: 5px solid grey;">
+  <div class="card-header">Project Turn-around Timer</div>
+ <div></div>
+  <div class="card-body" style="text-align: center">
+    <h4 class="card-title"> Time till Current Project Completion</h4>
+    <span id="demo" class="badge badge-pill badge-light"></span>
+  </div>
+</div>
+    
+
+
+
+
+  
+</div>
+
+</div>
+</div>
+
